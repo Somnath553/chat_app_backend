@@ -1,7 +1,7 @@
 const expressf = require('express');
-const port=process.env.PORT ||8000;
+const port=process.env.PORT;
 var app = expressf();    
-app.listen(port, "0.0.0.0");
+app.listen(port, '0.0.0.0');
 // e.g.
 // app.listen(port, () => {
 //     console.log(`Example app listening on port ${port} and http://localhost:${port}`)
