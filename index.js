@@ -1,9 +1,12 @@
 const expressf = require('express');
 const port=process.env.PORT ||8000;
 var app = expressf();    
-app.listen(port, "192.168.137.1");
+// app.listen(port, function(err){
+//     if (err) console.log("Error in server setup")
+//     console.log("Server listening on Port", port);
+// });
 // e.g.
-// app.listen(8000, "192.168.137.1");
+app.use(expressf.static("public"))
 const users={};
 const io = require('socket.io')(port, {
     cors: {
