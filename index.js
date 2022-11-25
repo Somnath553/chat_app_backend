@@ -1,21 +1,27 @@
 const expressf = require('express');
 const port=process.env.PORT || 8000;
 var host = process.env.YOUR_HOST || "0.0.0.0";
-var app = expressf();    
-app.listen(port,host);
-// e.g.
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port} and http://localhost:${port}`)
-  });
+var app = expressf();   
+const http= require('http').Server(app); 
+
+// app.listen(port,host);
+// // e.g.
+// app.listen(port, () => {
+//     console.log(`Example app listening on port ${port} and http://localhost:${port}`)
+//   });
 const users={};
-const io = require('socket.io')(port, {
+const io = require('socket.io')(http, {
     cors: {
       origin: '*',
     }
   });
   const express = require('express');
+
 app.get('/', function (req, res) {
     res.write(`<h1>coonected</h1>`)
+})
+http.listen(port, function(){
+    console.log('listen');
 })
 
 io.on('connection',socket =>{
