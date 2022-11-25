@@ -11,9 +11,12 @@ const io = require('socket.io')(port, {
     }
   });
   const express = require('express');
-
+app.get('/', function (req, res) {
+    res.write(`<h1>coonected</h1>`)
+})
 
 io.on('connection',socket =>{
+    console.log("connected");
     socket.on('new-user-joined',name=>{
         console.log('New user',name);
         users[socket.id]=name;
